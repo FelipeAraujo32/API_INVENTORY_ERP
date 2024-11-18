@@ -12,10 +12,13 @@ public class InventoryModel {
     private UUID inventoryId;
     private UUID productId;
     private Integer quantity;
-    
+
     public InventoryModel(UUID productId, Integer quantity) {
         this.productId = productId;
         this.quantity = quantity;
+    }
+
+    public InventoryModel() {
     }
 
     public UUID getInventoryId() {
