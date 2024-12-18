@@ -1,36 +1,28 @@
 package com.inventory.inventory_api.service;
 
-import java.util.Optional;
-import java.util.UUID;
-
 import org.springframework.stereotype.Service;
 
 import com.inventory.inventory_api.entity.InventoryModel;
 import com.inventory.inventory_api.exception.InsufficientInventoryException;
+import com.inventory.inventory_api.exception.NotFoundProductException;
 import com.inventory.inventory_api.repository.InventoryRepository;
 
 @Service
-public class InventoryRemoveService {
-
+public class RemoveQuantityService {
+    
     private final InventoryRepository inventoryRepository;
+    private final FindByService findByService;
 
-    public InventoryRemoveService(InventoryRepository inventoryRepository) {
+    public RemoveQuantityService(InventoryRepository inventoryRepository, FindByService findByService) {
         this.inventoryRepository = inventoryRepository;
+        this.findByService = findByService;
     }
 
-    public void removeInventory(InventoryModel inventory) throws InsufficientInventoryException {
-        InventoryModel inventoryModel = findByProduct(inventory.getProductId());
+    public void removeQuantityInventory(InventoryModel inventory) throws InsufficientInventoryException, NotFoundProductException {
+        InventoryModel inventoryModel = findByService.findByProduct(inventory.getProductId());
         checkQuantity(inventoryModel.getQuantity(), inventory.getQuantity());
         inventoryModel.setQuantity(inventoryModel.getQuantity() - inventory.getQuantity());
         inventoryRepository.save(inventoryModel);
-    }
-
-    private InventoryModel findByProduct(UUID productId) {
-        Optional<InventoryModel> inventoryModel = inventoryRepository.findByProductId(productId);
-        if (inventoryModel.isEmpty()) {
-            new InsufficientInventoryException("Product not found in inventory.");
-        }
-        return inventoryModel.get();
     }
 
     private void checkQuantity(int inventoryModelQuantity, int quantity) {
@@ -38,5 +30,4 @@ public class InventoryRemoveService {
             new InsufficientInventoryException("Insufficient quantity in inventory.");
         }
     }
-
 }

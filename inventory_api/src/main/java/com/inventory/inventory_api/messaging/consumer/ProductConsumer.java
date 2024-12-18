@@ -1,5 +1,7 @@
 package com.inventory.inventory_api.messaging.consumer;
 
+import java.util.UUID;
+
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -7,35 +9,54 @@ import com.inventory.inventory_api.convert.ProductEventConvet;
 import com.inventory.inventory_api.dto.ProductEventDto;
 import com.inventory.inventory_api.entity.InventoryModel;
 import com.inventory.inventory_api.exception.InsufficientInventoryException;
-import com.inventory.inventory_api.service.InventoryAddService;
-import com.inventory.inventory_api.service.InventoryQueryService;
-import com.inventory.inventory_api.service.InventoryRemoveService;
+import com.inventory.inventory_api.exception.NotFoundProductException;
+import com.inventory.inventory_api.service.AddQuantityService;
+import com.inventory.inventory_api.service.CreatedInventoryService;
+import com.inventory.inventory_api.service.DeleteInventoryService;
+import com.inventory.inventory_api.service.RemoveQuantityService;
 
 @Component
 public class ProductConsumer {
 
-    private final InventoryAddService inventoryAddService;
-    private final InventoryQueryService inventoryQueryService;
-    private final InventoryRemoveService inventoryRemoveService;
     private final ProductEventConvet productEventConvet;
+    private final CreatedInventoryService createdInventoryService;
+    private final AddQuantityService addQuantityService;
+    private final RemoveQuantityService removeQuantityService;
+    private final DeleteInventoryService deleteInventoryService;
 
-    public ProductConsumer(InventoryAddService inventoryAddService, InventoryQueryService inventoryQueryService,
-            InventoryRemoveService inventoryRemoveService, ProductEventConvet productEventConvet) {
-        this.inventoryAddService = inventoryAddService;
-        this.inventoryQueryService = inventoryQueryService;
-        this.inventoryRemoveService = inventoryRemoveService;
+    public ProductConsumer(ProductEventConvet productEventConvet, CreatedInventoryService createdInventoryService,
+            AddQuantityService addQuantityService, RemoveQuantityService removeQuantityService,
+            DeleteInventoryService deleteInventoryService) {
         this.productEventConvet = productEventConvet;
+        this.createdInventoryService = createdInventoryService;
+        this.addQuantityService = addQuantityService;
+        this.removeQuantityService = removeQuantityService;
+        this.deleteInventoryService = deleteInventoryService;
     }
 
     @RabbitListener(queues = "product.created.queue")
-    public void handleInventoryAdd(ProductEventDto productEventDto) {
+    public void handleInventoryCreated(ProductEventDto productEventDto) {
         InventoryModel inventoryModel = productEventConvet.toInventoryModel(productEventDto);
-        inventoryAddService.addInventory(inventoryModel);
+        createdInventoryService.inventoryModelCreated(inventoryModel);
+    }
+
+    @RabbitListener(queues = "product.updated.queue")
+    public void handleInventoryAddQuantity(ProductEventDto productEventDto) {
+        InventoryModel inventoryModel = productEventConvet.toInventoryModel(productEventDto);
+        addQuantityService.toAddInventory(inventoryModel);
+    }
+
+    @RabbitListener(queues = "product.remove.queue")
+    public void handleInventoryRemoveQuantity(ProductEventDto productEventDto) throws InsufficientInventoryException, NotFoundProductException{
+        InventoryModel inventoryModel = productEventConvet.toInventoryModel(productEventDto);
+        removeQuantityService.removeQuantityInventory(inventoryModel);
     }
 
     @RabbitListener(queues = "product.deleted.queue")
-    public void handleInventoryUpdate(ProductEventDto productEventDto) throws InsufficientInventoryException {
-        InventoryModel inventoryModel = productEventConvet.toInventoryModel(productEventDto);
-        inventoryRemoveService.removeInventory(inventoryModel);
+    public void handleInventoryDeleteInventory(UUID productId) throws NotFoundProductException {
+        deleteInventoryService.deletedInventoryByProductId(productId);
     }
+
+    
+
 }

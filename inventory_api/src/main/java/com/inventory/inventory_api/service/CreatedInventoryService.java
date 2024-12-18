@@ -6,18 +6,25 @@ import com.inventory.inventory_api.entity.InventoryModel;
 import com.inventory.inventory_api.repository.InventoryRepository;
 
 @Service
-public class InventoryAddService {
+public class CreatedInventoryService {
 
     private final InventoryRepository inventoryRepository;
 
-    public InventoryAddService(InventoryRepository inventoryRepository, InventoryQueryService inventoryQueryService) {
+    public CreatedInventoryService(InventoryRepository inventoryRepository) {
         this.inventoryRepository = inventoryRepository;
     }
 
-    public void addInventory(InventoryModel inventory) {
+    public InventoryModel inventoryModelCreated(InventoryModel inventory) {
         InventoryModel inventoryModel = inventoryRepository.findByProductId(inventory.getProductId())
-                .orElse((new InventoryModel(inventory.getProductId(), inventory.getQuantity())));
-        inventoryModel.setQuantity(inventoryModel.getQuantity() + inventory.getQuantity());
-        inventoryRepository.save(inventoryModel);
+                .orElse(new InventoryModel(inventory.getProductId(), inventory.getQuantity()));
+        return inventoryRepository.save(inventoryModel);
     }
+
+    
+
+    
+
+    
+
+    
 }

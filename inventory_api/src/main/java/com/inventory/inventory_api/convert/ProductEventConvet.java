@@ -1,8 +1,11 @@
 package com.inventory.inventory_api.convert;
 
+import org.springframework.stereotype.Component;
+
 import com.inventory.inventory_api.dto.ProductEventDto;
 import com.inventory.inventory_api.entity.InventoryModel;
 
+@Component
 public class ProductEventConvet {
     
     public InventoryModel toInventoryModel(ProductEventDto productEventDto){
