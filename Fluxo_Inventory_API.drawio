@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="24.8.6">
+  <diagram name="Página-1" id="Mv9n8s_G5HuuxUkklbK2">
+    <mxGraphModel dx="2300" dy="2101" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="X8Dk6EMXcsvOw9hCclZu-4" target="X8Dk6EMXcsvOw9hCclZu-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-4" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="-745" width="750" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-5" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Application_Gateway.svg;" vertex="1" parent="1">
+          <mxGeometry x="740" y="-680" width="250" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-6" value="API GATEWAY" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="680" y="-730" width="380" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-7" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Inventory-Service API&lt;/font&gt;&lt;/b&gt;" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="600" y="-260" width="530" height="140" as="geometry">
+            <mxRectangle x="160" y="74" width="90" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-8" value="&lt;p style=&quot;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;- Serviço para gerenciamento de inventário, responsável por armazenar a quantidade, criar um UUID específico para aquele inventaria e salvar o UUID do product que chega juntamente com a quantidade.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=13;align=left;" vertex="1" parent="X8Dk6EMXcsvOw9hCclZu-7">
+          <mxGeometry y="30" width="530" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-10" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Service&lt;/font&gt;&lt;/b&gt;" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="70" width="530" height="360" as="geometry">
+            <mxRectangle x="160" y="74" width="90" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-11" value="&lt;p style=&quot;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;background-color: initial; font-size: 18px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;InventoryAddService: Responsável por adicionar um novo registro ao inventario ou adicionar um quantidade em um registro já existente.&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 18px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;-&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial; font-size: 18px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;InventoryQueryService: Responsável por realizar consultas no banco de dados e retornar um dado ou uma lista de dado.&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;background-color: initial; font-size: 18px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;InventoryRemoveService: Responsável por remover um número &quot;X&quot;de quantidade de registro do UUID especifico, ele não excluir o registro pai ou algo do tipo.&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 18px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 18px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;- FALTA IMPLEMENTAR ALGUNS METADOS GENERICOS PARA EXCLUIR REGISTRO ALTERAR E ETC...&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=13;align=left;" vertex="1" parent="X8Dk6EMXcsvOw9hCclZu-10">
+          <mxGeometry y="30" width="530" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-12" value="&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Messaging RabbitMQ&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1140" width="530" height="230" as="geometry">
+            <mxRectangle x="160" y="74" width="90" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X8Dk6EMXcsvOw9hCclZu-13" value="&lt;p style=&quot;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;- Teremos alguns producer e consumer, para realizar comandos para acionamento de serviços.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;- Vamos consumir algumas filas, para criação do inventário, alteração e etc..&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;- Vamos Produzir algumas fila para que serviços externos possam consumir esses dados.&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=13;align=left;" vertex="1" parent="X8Dk6EMXcsvOw9hCclZu-12">
+          <mxGeometry y="30" width="530" height="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
