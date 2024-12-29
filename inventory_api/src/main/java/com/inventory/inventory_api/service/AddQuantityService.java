@@ -1,8 +1,11 @@
 package com.inventory.inventory_api.service;
 
+import org.springframework.stereotype.Service;
+
 import com.inventory.inventory_api.entity.InventoryModel;
 import com.inventory.inventory_api.repository.InventoryRepository;
 
+@Service
 public class AddQuantityService {
     
     private final InventoryRepository inventoryRepository;

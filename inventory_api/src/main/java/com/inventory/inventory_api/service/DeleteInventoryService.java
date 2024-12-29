@@ -5,9 +5,9 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.inventory.inventory_api.entity.InventoryModel;
-import com.inventory.inventory_api.exception.NotFoundInventoryException;
-import com.inventory.inventory_api.exception.NotFoundProductException;
 import com.inventory.inventory_api.repository.InventoryRepository;
+import com.inventory.inventory_api.service.business_exception.NotFoundInventoryException;
+import com.inventory.inventory_api.service.business_exception.NotFoundProductException;
 
 @Service
 public class DeleteInventoryService {

@@ -3,9 +3,9 @@ package com.inventory.inventory_api.service;
 import org.springframework.stereotype.Service;
 
 import com.inventory.inventory_api.entity.InventoryModel;
-import com.inventory.inventory_api.exception.InsufficientInventoryException;
-import com.inventory.inventory_api.exception.NotFoundProductException;
 import com.inventory.inventory_api.repository.InventoryRepository;
+import com.inventory.inventory_api.service.business_exception.InsufficientInventoryException;
+import com.inventory.inventory_api.service.business_exception.NotFoundProductException;
 
 @Service
 public class RemoveQuantityService {
